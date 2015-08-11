@@ -17,7 +17,7 @@ var donutShop = function (location, min, max, avgNuts) {
   // and   y is the ending number (larger number)
   //
   this.demand = function () {
-      return Math.floor(Math.random()*((this.max-this.min)+1)+this.min) * this.avgNuts;
+      return Math.floor((Math.random()*((this.max-this.min)+1)+this.min) * this.avgNuts);
 };
 
 
