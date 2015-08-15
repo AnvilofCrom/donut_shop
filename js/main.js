@@ -7,38 +7,29 @@ var Donutshop = function (location, min, max, avgNutz) {
   this.avgNutz  = avgNutz;
   this.totalNutzDay = [];
   this.sumNutzDay = 0;
-};
+}
 
-// per Hour, for 11 hours (7am - 6pm)
-// Create a for loop to represent 11 hours, so that the function this.demand is run the correct number of times.
-// then you need to store the values and add them up.
-//
-// Random number generator with starting and ending points
-//
-// Math.floor(Math.random()*((y-x)+1)+x);
-// where x is the starting number (smaller number)
-// and   y is the ending number (larger number)
-//
-
+// calculate hourly customers from min and max customers
 Donutshop.prototype.hourlyCustomers = function() {
   return Math.floor((Math.random()*(this.max - this.min) +1) + this.min);
-};
-
-Donutshop.prototype.hourlyNutz = function() {
-  return this.avgNutz * this.hourlyCustomers();
 
 }
 
+// calculate hourly donuts purchased by hourly customers * average donuts per customer value
+Donutshop.prototype.hourlyNutz = function() {
+  return Math.round(this.avgNutz * this.hourlyCustomers());
+
+}
+
+// build a table array of hourlyNutz
 Donutshop.prototype.donutsForEveryHour = function() {
-
   for (var i = 0; i < 12; i ++){
-
     this.totalNutzDay[i] = this.hourlyNutz();
 
   }
 
 }
-
+// Add Daily total of all donuts sold for the day hours to array
 Donutshop.prototype.hourlyTotal = function() {
   for (var i = 0; i < this.totalNutzDay.length; i++){
     this.sumNutzDay += this.totalNutzDay[i];
@@ -46,14 +37,13 @@ Donutshop.prototype.hourlyTotal = function() {
   }
 
 }
-
-
+//Prototype function that builds the
 Donutshop.prototype.render = function() {
 
       //writes location on html page
       var getTable = document.getElementById("donuts");
       var newRow = document.createElement("tr");
-      newRow.id = this.location;
+      //newRow.id = this.location;
       newRow.innerHTML = this.location;
       getTable.appendChild(newRow);
 
@@ -69,32 +59,56 @@ Donutshop.prototype.render = function() {
       var total = document.createElement("td");
       total.innerHTML = this.sumNutzDay;
       newRow.appendChild(total);
-};
+}
 
 // Instantiate new objects to represent Donutshop
 var downtown  = new Donutshop ('Downtown', 8, 43, 4.50);
-console.log(downtown.hourlyNutz());
 var caphill   = new Donutshop ('Capitol Hill', 4, 37, 2.00);
-console.log(caphill.hourlyNutz());
 var slakeunion= new Donutshop ('South Lake Union', 9, 23, 6.33);
-console.log(slakeunion.hourlyNutz());
 var wedgewood = new Donutshop ('Wedgewood', 2, 28, 1.25);
-console.log(wedgewood.hourlyNutz());
 var ballard   = new Donutshop ('Ballard', 8, 58, 3.75);
-console.log(ballard.hourlyNutz());
 
 downtown.donutsForEveryHour();
-downtown.render();
-
 caphill.donutsForEveryHour();
-caphill.render();
-
 slakeunion.donutsForEveryHour();
-slakeunion.render();
-
 wedgewood.donutsForEveryHour();
-wedgewood.render();
-
 ballard.donutsForEveryHour();
+
+downtown.render();
+caphill.render();
+slakeunion.render();
+wedgewood.render();
 ballard.render();
+
+//Button function to add new location isn't working
+var newLocationButton = document.getElementById("add-new-location");
+
+var userSubmittedSite = function(siteInput, minInput, maxInput, salesInput) {
+  var userInput = new Location(siteInput, minInput, maxInput, salesInput);
+  return userInput;
+};
+
+// var storeInput = function() {
+//   var siteInput = document.getElementById('location').value;
+//   var minInput = document.getElementById('min').value;
+//   var maxInput = document.getElementById('max').value;
+//   var salesInput = document.getElementById('avgNutz').value;
+//   var userInput = userSubmittedSite(siteInput, minInput, maxInput, salesInput);
+// //         renderAll();
+
+// }
+
+// var createStoreForm = document.getElementById("add-new-location");
+// createStoreForm.addEventListener('click', storeInput);
+
+// Sound that plays when button is clicked taken from Stackoverflow
+// http://stackoverflow.com/questions/18826147/javascript-audio-play-on-click
+ var play = function (){
+       var audio = document.getElementById("audio");
+       audio.play() }
+
+
+// var donutShopObjects = [downtown, caphill, slakeunion, wedgewood, ballard];
+
+// newLocationButton.addEventListener("click", newLocationSubmit);
 
