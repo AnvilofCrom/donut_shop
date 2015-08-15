@@ -3,11 +3,21 @@
   <title>TOP POT DONUT DEMAND SIMULATOR</title>
   <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-</head>
+    <style type="text/css">
+      body {
+        background-image: url("img/2371ff_homer-donut.gif");
+        background-position: right;
 
+
+        padding: 10px;}
+    </style>
+ <link href="css/style.css" type="text/css" rel="stylesheet" />
+
+</head>
 <body>
-  <p><font color="blue">TOP POT DONUT DEMAND SIMULATOR </font></p>
-<p>Welcome to the Top Pot Donut Demand Simulator which simulates the possible hourly demand of donut sales each day</p>
+  <h2><font color="white">TOP POT DONUT DEMAND SIMULATOR </font></h2>
+
+<p <font color="white"> Welcome to the Top Pot Donut Demand Simulator which simulates the possible hourly demand of donut sales each day</font></p>
 <hr />
   <table id="donuts">
   <tr>
@@ -30,26 +40,31 @@
 </table>
   <hr />
     <form id="new_location">
-      <table style="width:100%">
-        <tr>
+     <fieldset>
+        <legend>Add New Location </legend>
+
           <label for ="location"> Location: </label>
-          <input id = "location" type="text">
+          <input id = "location" type="text"> <br>
+
           <label for ="min"> Min Customers/Hr: </label>
-          <input id = "min" type="number">
+          <input id = "min" type="number"> <br>
+
           <label for = "max">Max Customers/Hr: </label>
-          <input id = "max" type="number">
-          <label for = "avg_donuts"> Average Donuts Per Customer: </label>
-          <input id = "avgNuts" type="number">
-          <tr>
-          </tr>
-          <button id="add_new_location" type="button">Add New Location </button>
-        </tr>
+          <input id = "max" type="number"> <br>
 
+          <label for = "avgNuts"> Average Donuts Per Customer: </label>
+          <input id = "avgNuts" type="number"> <br>
+    </fieldset>
 
-      </table>
+          <button id="add-new-location" type="button" onclick="play()"
+          >Add New Location </button>
 
     </form>
-
+<br>
+<img id="image1" src="img/giphy.gif">
 <script src="js/main.js"></script>
 </body>
+<audio id="audio" src="mmmdonuts.wav" ></audio>
+
+ >
 </html>
