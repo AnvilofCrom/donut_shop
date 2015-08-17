@@ -1,37 +1,49 @@
-/* CSS Stylesheet */
-/* Table of Contents for Layout
-Headers 9 - 14
-Body 17 - 20
-Paragraph 23 - 27
-Table 30 - 35
-Form 38-47  */
+/* CSS Stylesheet
+Table of Contents for Layout
+Headers 11-24
+Body 26-29
+Paragraph 31-37
+Table 39-45
+Form 49-58
+ITransition 73-93
+*/
 
-
-
-
-
-h1, h2 {
+h1,h2 {
   font-family: 'Indie Flower', cursive;
   text-align: center;
+  font-size: 250%;
   background-color: #8E20B3;
   color: #45B320;
 }
 
+h3 {
+  font-family: 'Indie Flower', cursive;
+  background-color: #E3D8D8;
+  padding: 5px;
+  font-size: 120%;
+}
+
 body {
   background-image: url("homer.gif");
+  zoom: 90%;
 }
 
 p {
   font-family: 'Indie Flower', cursive;
   background-color: #E3D8D8;
   padding: 5px;
+  font-size: 120%;
+  /*width: 450px;*/
 }
 
 th, td, table {
   font-family: 'Fjalla One', sans-serif;
-  padding: 5px;
-  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  border: 3px solid black;
   background-color: #CB9ADB;
+  width: 60%;
+
 }
 
 form {
@@ -45,4 +57,37 @@ form {
   background-color: #AC93B5;
 }
 
+#new_location {
+  position: fixed;
+  right:100px;
+  top:500px;
+  z-index: 10;
+}
 
+#bacon-ipsum {
+  font-family: 'Indie Flower', cursive;
+  background-color: #8E20B3;
+  padding:10px;
+}
+
+#image1:hover {
+
+  transform: scale(1.75);
+}
+#image1 {
+  position: absolute;
+  top: 200px;
+  right: 100px;
+}
+
+.image {
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    /*float: right;*/
+}
+
+.image:hover {
+    transform: rotate(360deg);
+}
